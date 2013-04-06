@@ -7,8 +7,8 @@ from login import views
 
 urlpatterns = patterns('',
     # Example:
-    url(r'^$',views.show_login),
-    url(r'^login/$', views.check_login),
+    url(r'^$',views.login),
+    url(r'^loggedin/$', views.login_ok),
     # (r'^dDNF/', include('dDNF.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
