@@ -9,14 +9,14 @@
 {% if no_post %}
 	<strong> Please enter something...</strong>
 {% endif %}
-
+    <p><em>{{ link }}</em></p>
 {% if login_failed %}  
 	<p> Login failed.</p>
 {% endif %}
 
 	<form action="/" method="post">{% csrf_token %}
-	Username:a <input type="text" name="username"> Password:a <input type="password" name="password"> <input type="submit" value="Login">
+	Username: <input type="text" name="username"> Password: <input type="password" name="password"> <input type="submit" value="Login">
+	<input type="hidden" name="link" value="{{ link }}">	
 	</form>
-
 
 {% endblock %}

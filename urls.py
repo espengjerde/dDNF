@@ -7,8 +7,11 @@ from login import views
 
 urlpatterns = patterns('',
     # Example:
-    url(r'^$',views.login),
-    url(r'^loggedin/$', views.login_ok),
+    url(r'^meta/$',views.checkmeta),    
+    url(r'^stats/$', views.statistics),
+    #url(r'^',views.checkmeta),
+    url(r'^',views.login),
+    
     # (r'^dDNF/', include('dDNF.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -17,3 +20,4 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
 )
+
