@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block body %}
+{% if logout %}
+    <h2>Logged out</h2>
+    <p>You have been logged out. You have to login again to get internet access.</p>
+{% endif %}
+
 	<h1>Please login to gain internet access</h1>
 {% if no_post %}
 	<strong> Please enter something...</strong>
@@ -13,7 +18,6 @@
 {% if login_failed %}  
 	<p> Login failed.</p>
 {% endif %}
-
 	<form action="/" method="post">{% csrf_token %}
 	Username: <input type="text" name="username"> Password: <input type="password" name="password"> <input type="submit" value="Login">
 	<input type="hidden" name="link" value="{{ link }}">	

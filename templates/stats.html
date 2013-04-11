@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>User statistics for {{name}}</h1>
+<p> <strong> IP address:</strong> {{ip}} </p>
+
+{% if limited %}
+    <h2>YOU ARE LIMITED TO {{limit}}</h2>
+{% endif %}
+
+<h3>Your statistics</h3>
+<table>
+    <tr>
+    <th>Active connections:</th>
+    <td>{{ conn }}</td>
+    <td></td>
+    </tr>
+    <tr>
+    <th>Average TX:</th>
+    <td>{{ io.bytes_sent }} bytes</td>
+    <td>{{ io.pkt_sent }} pkts</td>
+    </tr>
+    <tr>
+    <th>Average RX:</th>
+    <td>{{ io.bytes_received }} bytes</td>
+    <td>{{ io.pkt_received }} pkts</td>
+    </tr>
+</table>
+
+<a href="logout/"> Log me out</a>
+{% endblock %}
