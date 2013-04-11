@@ -4,27 +4,52 @@
 <p> <strong> IP address:</strong> {{ip}} </p>
 
 {% if limited %}
-    <h2>YOU ARE LIMITED TO {{limit}}</h2>
+<div id="warning">
+    <h2>YOUR CONNECTION HAS BEEN LIMITED</h2>
+    <p>You have been limited because you have violated {{limit}}. If you think this is an error, please contact your network admin.</p>
+</div>
 {% endif %}
+<p>
+<h3>Your statistics</h3
 
-<h3>Your statistics</h3>
-<table>
+<table align="left">
     <tr>
-    <th>Active connections:</th>
-    <td>{{ conn }}</td>
-    <td></td>
+    <th>Connections:</th>
+    <td>{{ conn|length }}</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
     </tr>
     <tr>
-    <th>Average TX:</th>
+    <th>Sent:</th>
     <td>{{ io.bytes_sent }} bytes</td>
     <td>{{ io.pkt_sent }} pkts</td>
+    <td>&nbsp;</td>
     </tr>
     <tr>
-    <th>Average RX:</th>
+    <th>Recieved:</th>
     <td>{{ io.bytes_received }} bytes</td>
     <td>{{ io.pkt_received }} pkts</td>
+    <td>&nbsp;</td>
     </tr>
 </table>
+<table width="100%">
+    <tr>
+    <td><a href="logout/"> Log me out</a></td>
+    <td></td>
+    </tr>
+</table>
+</p>
+<p>
 
-<a href="logout/"> Log me out</a>
+</p>
+<p>
+<h3>Active connections</h3>
+<ol>
+    {% for c in conn %}
+    <li>{{ c }} </li>
+    {% empty %}
+    <li>NO ACVTIVE CONNECTIONS.</li>
+    {% endfor %}
+</ol>
+</p>
 {% endblock %}

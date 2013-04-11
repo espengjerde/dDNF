@@ -6,7 +6,7 @@ html, body{
 div#wrap{
     margin: auto;
     background-color: #EEF8EE;
-    height: 95%;
+    height: auto;
     width: 800px;
     font-family: arial;
     border-left: 2px solid #224A22;
@@ -17,6 +17,7 @@ div#header{
     background-color: #55B855;
     height: auto;
     border-bottom: 2px solid #AADCAA;
+    text-align:left;
 }
 h1.header{
     color: white;
@@ -31,10 +32,25 @@ div#footer{
     height: auto;
     font-family: arial;
 }
+div#warning{
+    border: 2px solid red;
+    background-color: pink;
+	height: auto;
+	padding: 20px 20px 20px 20px;
+	text-color: purple;
+}
+
 
 h1{
     color: #55B855;
 }
-p{
+p{	
     margin: 7px 0px 4px 4px;
 }
+table,th,td{
+    text-align: left;
+}
+tr,th{
+    width: auto;
+}
+

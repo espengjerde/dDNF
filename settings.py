@@ -88,6 +88,8 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+STATIC_DOC_ROOT = '/home/espen/workspace/dDNF/templates/media'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',

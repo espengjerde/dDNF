@@ -1,11 +1,13 @@
 # Create your views here.
 from django.http import HttpResponse
 from DNF.auth.login import Login
+from DNF.auth.drop import Drop
 from DNF.stats import info 
 from django.shortcuts import render_to_response, redirect
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.core.context_processors import csrf
 l = Login()
+d = Drop()
 ip = info.IP()
 
 @csrf_exempt
@@ -26,8 +28,10 @@ def login(request):
         return redirect(link) 
     return render_to_response("login.html",{'no_post':True})
 
-def statistics(request):
-    return HttpResponse(ip.getStats(request.META['REMOTE_ADDR']))
+def logout(request):
+    ip_addr = str(request.META['REMOTE_ADDR'])
+    d.ip4(ip_addr);
+    return render_to_response('login.html',{'logout':True})
 
 def checkmeta(request):
     values = request.META.items()
