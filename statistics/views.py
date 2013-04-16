@@ -9,7 +9,8 @@ stats = Statistics()
 
 def user_stats(request):
     ipaddr = request.META['REMOTE_ADDR']
-    conn = stats.get_conntrack(ipaddr)
+    #conn = stats.get_conntrack(ipaddr)
+    conn = stats.get_connections(ipaddr)
     io = stats.get_iptables_io(ipaddr)
     limited = stats.is_limited(ipaddr)
     limit = [conf.bandwidth.max_connections_user,conf.bandwidth.rx_max_user,conf.bandwidth.tx_max_user]

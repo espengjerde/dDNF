@@ -14,18 +14,26 @@ ip = info.IP()
 def login(request):    
     ip_addr = str(request.META['REMOTE_ADDR'])
     if ip.isLoggedIn(ip_addr):
-        return redirect('stats/')
+        return redirect('/stats/')
+    
     if not request.POST:
         link = "http://"+request.META.get('HTTP_HOST')+request.get_full_path()
-        return render_to_response("login.html",{'no_post':False, 'link':link})
+        return render_to_response("login.html",{'no_post':True, 'link':link})
     else:
         username = str(request.POST['username'])
         password = str(request.POST['password'])
-        link = str(request.POST['link'])
-            
-        print(str(l.ip4(username, password, ip_addr)))
-        
-        return redirect(link) 
+
+        if request.POST['link']:
+            link = str(request.POST['link'])
+            print("link is not empty")
+        else:
+            print("empty link...")
+            link = "/"
+        if l.ip4(username, password, ip_addr):
+            return redirect(link)
+        else:
+            return render_to_response('login.html',{'link':link, 'failed':True})
+         
     return render_to_response("login.html",{'no_post':True})
 
 def logout(request):

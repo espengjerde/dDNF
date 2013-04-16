@@ -11,12 +11,20 @@
     <p>You have been logged out. You have to login again to get internet access.</p>
 </div>
 {% endif %}
-
-	<h1>Please login to gain internet access</h1>
 {% if no_post %}
-	<strong> Please enter something...</strong>
+<div id="warning">
+    <h2>Input error</h2>
+    <p>You have to give us both your username and password!</p>
+</div>
 {% endif %}
-    <p><em>{{ link }}</em></p>
+{% if failed %}
+<div id="warning">
+    <h2>Login failed</h2>
+    <p>That combination of username and password is not known to us.</p>
+</div>
+{% endif %}
+<h1>Please login to gain internet access</h1>
+    <p>After the login, you will be forwarded to: <em>{{ link }}</em></p>
 {% if login_failed %}  
 	<p> Login failed.</p>
 {% endif %}
